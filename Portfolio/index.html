@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            background-color: #F6F8D5;
+        }
+
+        nav {
+            background-color: #205781;
+            height: 80px;
+        }
+
+        nav .logo img {
+            font-size: 45px;
+            line-height: 80px;
+            padding: 0 20px;
+            float: left;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        nav ul {
+            float: right;
+            line-height: 80px;
+        }
+
+        nav ul li {
+            list-style: none;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            padding: 7px 13px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        nav #check {
+            display: none;
+        }
+
+        nav .checkbtn {
+            float: right;
+            cursor: pointer;
+            line-height: 80px;
+            font-size: 25px;
+            color: #fff;
+            margin-right: 20px;
+            display: none;
+        }
+
+        .hero-section {
+            background-color: #F6F8D5;
+            padding: 50px 0;
+        }
+
+        .hero-text {
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-weight: bold;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .about-section {
+            padding: 60px 0;
+        }
+
+        .about-text {
+            text-align: left;
+        }
+
+        .about-text h2 {
+            font-weight: bold;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .service-item {
+            border: 1px solid #dee2e6;
+            text-align: center;
+            padding: 20px;;
+        }
+        .service-item:hover{
+            background-color: #f6f9bf;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .project-item {
+            margin-bottom: 20px;
+        }
+
+        .project-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-title {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .sevh1{
+            font-style: bold;
+        }
+
+        .filter-buttons {
+            margin-bottom: 20px;
+        }
+
+        .plan-card {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .plan-card:hover {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+        }
+
+        .plan-card h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .plan-card p {
+            margin-bottom: 15px;
+        }
+
+        .plan-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .plan-card li {
+            margin-bottom: 5px;
+        }
+
+        .plan-card .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #4F959D;
+            color: #fff;
+            padding: 40px 0;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #205781;
+        }
+
+        .footer .social-icons a {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .footer .newsletter-form {
+            display: flex;
+        }
+
+        .footer .newsletter-form input[type="email"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            background-color: #161b22;
+            color: #fff;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .footer .newsletter-form button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #58a6ff;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .footer .copyright {
+            margin-top: 30px;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width:600px) {
+            nav ul {
+                width: 100%;
+                height: auto;
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background-color: #205781;
+                text-align: center;
+                transition: 0.5s;
+            }
+
+            nav ul li {
+                display: block;
+            }
+
+            nav .checkbtn {
+                display: block;
+            }
+
+            nav #check:checked~ul {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa-solid fa-bars"></i>
+        </label>
+
+        <div class="logo">
+            <h1><img src="./logo.png" width="250px" height="60px"></h1>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#mywork">My Work</a></li>
+            <li><a href="#plans">Plans</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="home">
+        <div class="align-items-center hero-section">
+            <div class="col-md-12 hero-text">
+                <small class="text-muted">THIS IS ME</small>
+                <h1>A QADIR KHAN</h1>
+                <p>You will begin to realize why this exercise is called the Dickens Pattern with reference to the ghost
+                    showing Scrooge some different futures.</p>
+                <a href="#" class="btn btn-custom">DISCOVER NOW</a>
+            </div>
+            <!-- <div class="col-md-0 hero-image">
+                <img src="" class="img-fluid">
+            </div> -->
+        </div>
+    </div>
+
+    <div class="container" id="about">
+        <div class="row align-items-center about-section">
+            <div class="col-md-4 about-image text-center">
+                <img src="./image01 - Copy.jpeg" class="img-fluid">
+            </div>
+            <div class="col-md-6 about-text">
+                <small class="text-muted">ABOUT ME</small>
+                <h2>PERSONAL DETAILS</h2>
+                <p>Here, I focus on a range of items and features that we use in life without giving them a second
+                    thought, such as Coca Cola. Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</p>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                <a href="#" class="btn btn-custom">VIEW FULL DETAILS</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="services">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1>My Offered Services</h1>
+                <p>At about this time of year, some months after New Year's resolutions have been made and kept, or made
+                    and neglected.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-6 mb-4 service-item">
+                <i class="bi bi-globe service-icon"></i>
+                <h4>Web Design</h4>
+                <p>"It is not because things are difficult that we do not dare; it is because we do not dare that they
+                    are difficult."</p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4 service-item">
+                <i class="bi bi-code-slash service-icon"></i>
+                <h4>Web Development</h4>
+                <p>If you are an entrepreneur, you know that your success cannot depend on the opinions of others. Like
+                    the wind, opinions.</p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4 service-item">
+                <i class="bi bi-camera service-icon"></i>
+                <h4>Photography</h4>
+                <p>Do you want to be even more successful? Learn to love learning and growth. The more effort you put
+                    into improving your skills.</p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4 service-item">
+                <i class="bi bi-scissors service-icon"></i>
+                <h4>Clipping Path</h4>
+                <p>Hypnosis quit smoking methods maintain caused quite a stir in the medical world over the last two
+                    decades. There is a lot of argument.</p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4 service-item">
+                <i class="bi bi-phone service-icon"></i>
+                <h4>Apps Interface</h4>
+                <p>Do you, sometimes have the feeling that you're running into the same obstacles over and over again?
+                    Many of my conflicts.</p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4 service-item">
+                <i class="bi bi-rocket service-icon"></i>
+                <h4>Graphic Design</h4>
+                <p>You've heard the expression, "just believe it and it will come." Well, technically, that is true.
+                    However, 'believing' is not just thinking that.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="mywork">
+        <div class="row justify-content-center text-center">
+            <div class="col-md-8">
+                <h1>Our Latest Featured Projects</h1>
+                <p>Who are in extremely love with eco friendly system.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center filter-buttons">
+            <div class="col-auto">
+                <button class="btn btn-outline-secondary btn-sm">All</button>
+                <button class="btn btn-outline-secondary btn-sm">Vector</button>
+                <button class="btn btn-outline-secondary btn-sm">Raster</button>
+                <button class="btn btn-outline-secondary btn-sm">UI/UX</button>
+                <button class="btn btn-outline-secondary btn-sm">Printing</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-6 project-item">
+                <img src="./ebook.png" class="project-img">
+                <h5 class="project-title"><a href="https://cheerful-rolypoly-16084a.netlify.app/">EBOOK</a></h5>
+            </div>
+            <div class="col-md-4 col-sm-6 project-item">
+                <img src="./movie.png" class="project-img">
+                <h5 class="project-title"><a href="https://bespoke-cassata-0d88af.netlify.app/">MOVIESHUB</a></h5>
+            </div>
+            <div class="col-md-4 col-sm-6 project-item">
+                <img src="./dark theme foodweb.png" class="project-img">
+                <h5 class="project-title"><a href="https://cheery-hamster-311eba.netlify.app/">DARK FOOD WEB</a></h5>
+            </div>
+            <div class="col-md-4 col-sm-6 project-item">
+                <img src="./sprite.png" class="project-img">
+                <h5 class="project-title"><a href="https://lighthearted-naiad-2a3009.netlify.app/">SPRITE</a></h5>
+            </div>
+            <div class="col-md-4 col-sm-6 project-item">
+                <img src="./shoesweb.png" class="project-img">
+                <h5 class="project-title"><a href="https://capable-longma-cd501d.netlify.app/">SHOES WEB</a></h5>
+            </div>
+            <div class="col-md-4 col-sm-6 project-item">
+                <img src="./fast food web.png" class="project-img">
+                <h5 class="project-title"><a href="https://scintillating-smakager-4dc825.netlify.app/">FAST FOOD</a></h5>
+            </div>
+            <div class="col-md-4 col-sm-6 project-item">
+                <img src="./fruite card.png" class="project-img">
+                <h5 class="project-title"><a href="https://radiant-dango-ccb430.netlify.app/">FRUITE CARD</a></h5>
+            </div>
+            <div class="col-md-4 col-sm-6 project-item">
+                <img src="./foodweb.png" class="project-img">
+                <h5 class="project-title"><a href="https://frolicking-mousse-a20390.netlify.app/">FOOD WEB</a></h5>
+            </div>
+            <div class="col-md-4 col-sm-6 project-item">
+                <img src="./profile card.png" class="project-img">
+                <h5 class="project-title"><a href="https://deluxe-axolotl-458df3.netlify.app/">PROFILE CARD</a></h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="plans">
+        <div class="row justify-content-center text-center">
+            <div class="col-md-8">
+                <h1>Choose Your Plan</h1>
+                <p>When someone does something that they know that they shouldn't do, did they.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="plan-card">
+                    <h2>Economy</h2>
+                    <p>For the individuals</p>
+                    <ul>
+                        <li>Secure Online Transfer</li>
+                        <li>Unlimited Styles for Interface</li>
+                        <li>Reliable Customer Service</li>
+                    </ul>
+                    <p class="price">£199.00</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="plan-card">
+                    <h2>Business</h2>
+                    <p>For the individuals</p>
+                    <ul>
+                        <li>Secure Online Transfer</li>
+                        <li>Unlimited Styles for Interface</li>
+                        <li>Reliable Customer Service</li>
+                    </ul>
+                    <p class="price">£299.00</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="plan-card">
+                    <h2>Premium</h2>
+                    <p>For the individuals</p>
+                    <ul>
+                        <li>Secure Online Transfer</li>
+                        <li>Unlimited Styles for Interface</li>
+                        <li>Reliable Customer Service</li>
+                    </ul>
+                    <p class="price">£399.00</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="plan-card active">
+                    <h2>Exclusive</h2>
+                    <p>For the individuals</p>
+                    <ul>
+                        <li>Secure Online Transfer</li>
+                        <li>Unlimited Styles for Interface</li>
+                        <li>Reliable Customer Service</li>
+                    </ul>
+                    <p class="price">£499.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>About Me</h3>
+                    <p>We have tested a number of registry fix and clean utilities and present our top 3 list on our
+                        site for your convenience.</p>
+                    <p class="copyright">Copyright © 2025 All rights reserved | This template is made with <i
+                            class="fas fa-heart" style="color: red;"></i> by A QADIR KHAN</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest trends</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter Email Address">
+                        <button>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Follow Me</h3>
+                    <p>Let us be social</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/abdul-qadir-75120b25a/"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</body>
+
+</html>
